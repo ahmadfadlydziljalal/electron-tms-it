@@ -1,5 +1,7 @@
 {
   "name": "desktop-tms",
+  "authors": "Fadly Dzil",
+  "description": "Aplikasi Desktop TMS-GROUP",
   "executableName": "desktop-tms",
   "version": "0.1.0",
   "main": "public/electron.js",
@@ -58,7 +60,6 @@
   "config": {
     "forge": {
       "packagerConfig": {
-        "icon": "src/icons/png/64x64.png",
         "name": "desktop-tms",
         "executableName": "desktop-tms"
       },
@@ -66,7 +67,15 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "desktop-tms"
+            "name": "desktop-tms",
+            "icon": "src/icons/win/icon.ico",
+            "options": {
+              "authors": "Fadly Dzil",
+              "maintainer": "Fadly Dzil",
+              "homepage": "http://it.tresnamuda.co.id",
+              "description": "Aplikasi Desktop TMS-GROUP",
+              "executableName": "desktop-tms"
+            }
           }
         },
         {
@@ -78,6 +87,7 @@
         {
           "name": "@electron-forge/maker-deb",
           "config": {
+            "icon": "src/icons/png/64x64.png",
             "options": {
               "maintainer": "Fadly Dzil",
               "homepage": "http://it.tresnamuda.co.id",
