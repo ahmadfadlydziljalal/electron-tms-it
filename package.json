@@ -1,5 +1,6 @@
 {
-  "name": "desktop",
+  "name": "desktop-tms",
+  "executableName": "desktop-tms",
   "version": "0.1.0",
   "main": "public/electron.js",
   "homepage": "./",
@@ -12,18 +13,18 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
+    "typescript": "^4.1.3",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+    "dev": "concurrently -k \"BROWSER=none npm start\" \"npm:electron\"",
+    "electron": "wait-on tcp:3000 && electron-forge start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "concurrently -k \"BROWSER=none npm start\" \"npm:electron\"",
-    "electron": "wait-on tcp:3000 && electron .",
-    "forge-start": "electron-forge start",
-    "forge-package": "electron-forge package",
-    "forge-make": "electron-forge make"
+    "package": "react-scripts build && electron-forge package",
+    "make": "react-scripts build && electron-forge make"
   },
   "eslintConfig": {
     "extends": [
@@ -58,13 +59,14 @@
     "forge": {
       "packagerConfig": {
         "icon": "src/icons/png/64x64.png",
-        "name": "Desktop-T"
+        "name": "desktop-tms",
+        "executableName": "desktop-tms"
       },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "desktop"
+            "name": "desktop-tms"
           }
         },
         {
@@ -75,11 +77,14 @@
         },
         {
           "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
+          "config": {
+            "options": {
+              "maintainer": "Fadly Dzil",
+              "homepage": "http://it.tresnamuda.co.id",
+              "description": "Aplikasi Desktop TMS-GROUP",
+              "executableName": "desktop-tms"
+            }
+          }
         }
       ]
     }
